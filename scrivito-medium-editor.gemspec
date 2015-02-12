@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description = 'This gem integrates the WYSIWYG JavaScript editor MediumEditor in Scrivito UI'
   s.license     = 'LGPL-3.0'
 
-  s.files = Dir['{app,lib}/**/*', 'LICENSE', 'Rakefile']
+  s.files = Dir['{app,lib,vendor}/**/*', 'LICENSE', 'Rakefile']
 
   s.add_dependency 'bundler'
   s.add_dependency 'scrivito'
