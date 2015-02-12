@@ -1,5 +1,7 @@
 # scrivito-medium-editor
 
+[![Gem Version](https://badge.fury.io/rb/scrivito-medium-editor.svg)](http://badge.fury.io/rb/scrivito-medium-editor)
+
 This gem integrates the WYSIWYG JavaScript editor [MediumEditor](https://github.com/daviferreira/medium-editor) in [Scrivito UI](https://scrivito.com).
 
 ![scrivito-medium-editor](https://raw.github.com/kostia/scrivito-medium-editor/master/scrivito-medium-editor.png)
