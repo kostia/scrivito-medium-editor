@@ -2,6 +2,8 @@
 
 This gem integrates the WYSIWYG JavaScript editor [MediumEditor](https://github.com/daviferreira/medium-editor) in [Scrivito UI](https://scrivito.com).
 
+![scrivito-medium-editor](https://raw.github.com/kostia/scrivito-medium-editor/master/scrivito-medium-editor.png)
+
 ## Installation
 
 Add to `Gemfile`:
