@@ -1,4 +1,7 @@
 /*
  *= require medium-editor
  *= require medium-editor-theme-flat
+ *= require_self
  */
+
+.medium-editor-toolbar li button * { color: inherit; }
