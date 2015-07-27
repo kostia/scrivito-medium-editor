@@ -2541,6 +2541,9 @@ var Events;
         },
 
         updateInput: function (target, eventObj) {
+            if (!this.contentCache) {
+                return;
+            }
             // An event triggered which signifies that the user may have changed someting
             // Look in our cache of input for the contenteditables to see if something changed
             var index = target.getAttribute('medium-editor-index');
@@ -3117,10 +3120,12 @@ var AnchorForm;
                 // fixme: ideally, this targetCheckboxText would be a formLabel too,
                 // figure out how to deprecate? also consider `fa-` icon default implcations.
                 template.push(
+                    '<div class="medium-editor-toolbar-form-row">',
                     '<input type="checkbox" class="medium-editor-toolbar-anchor-target">',
                     '<label>',
                     this.targetCheckboxText,
-                    '</label>'
+                    '</label>',
+                    '</div>'
                 );
             }
 
@@ -3128,10 +3133,12 @@ var AnchorForm;
                 // fixme: expose this `Button` text as a formLabel property, too
                 // and provide similar access to a `fa-` icon default.
                 template.push(
+                    '<div class="medium-editor-toolbar-form-row">',
                     '<input type="checkbox" class="medium-editor-toolbar-anchor-button">',
                     '<label>',
                     this.customClassOptionText,
-                    '</label>'
+                    '</label>',
+                    '</div>'
                 );
             }
 
@@ -3451,7 +3458,7 @@ var AnchorPreview;
 
             // Detect empty href attributes
             // The browser will make href="" or href="#top"
-            // into absolute urls when accessed as event.targed.href, so check the html
+            // into absolute urls when accessed as event.target.href, so check the html
             if (!/href=["']\S+["']/.test(target.outerHTML) || /href=["']#\S+["']/.test(target.outerHTML)) {
                 return true;
             }
@@ -4863,7 +4870,7 @@ var Toolbar;
                         offset = offset + 1;
                     }
                     selectionRange = Selection.select(this.document, adjacentNode, offset,
-                        selectionRange.endContainer, selectionRange.offset);
+                        selectionRange.endContainer, selectionRange.endOffset);
                 }
             }
         },
@@ -5177,8 +5184,7 @@ var ImageDragging;
 
 var extensionDefaults;
 (function () {
-    // for now this is empty because nothing interally uses an Extension default.
-    // as they are converted, provide them here.
+
     extensionDefaults = {
         button: Button,
         form: FormExtension,
@@ -5613,7 +5619,7 @@ function MediumEditor(elements, options) {
         // Built-in extensions
         var builtIns = {
             paste: true,
-            anchorPreview: isAnchorPreviewEnabled.call(this),
+            'anchor-preview': isAnchorPreviewEnabled.call(this),
             autoLink: isAutoLinkEnabled.call(this),
             keyboardCommands: isKeyboardCommandsEnabled.call(this),
             placeholder: isPlaceholderEnabled.call(this)
@@ -5905,7 +5911,7 @@ function MediumEditor(elements, options) {
                     merged = Util.extend({}, this.options.anchor, opts);
                     extension = new MediumEditor.extensions.anchor(merged);
                     break;
-                case 'anchorPreview':
+                case 'anchor-preview':
                     extension = new MediumEditor.extensions.anchorPreview(this.options.anchorPreview);
                     break;
                 case 'autoLink':
@@ -6187,6 +6193,16 @@ function MediumEditor(elements, options) {
 
         pasteHTML: function (html, options) {
             this.getExtensionByName('paste').pasteHTML(html, options);
+        },
+
+        setContent: function (html, index) {
+            index = index || 0;
+
+            if (this.elements[index]) {
+                var target = this.elements[index];
+                target.innerHTML = html;
+                this.events.updateInput(target, { target: target, currentTarget: target });
+            }
         }
     };
 }());
@@ -6208,7 +6224,7 @@ MediumEditor.parseVersionString = function (release) {
 
 MediumEditor.version = MediumEditor.parseVersionString.call(this, ({
     // grunt-bump looks for this:
-    'version': '5.4.0'
+    'version': '5.5.1'
 }).version);
 
     return MediumEditor;
