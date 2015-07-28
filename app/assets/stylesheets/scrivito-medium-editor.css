@@ -1,8 +1,14 @@
 /*
  *= require medium-editor
  *= require medium-editor-theme-flat
+ *= require scrivito_customer_icons
  *= require_self
  */
 
 .medium-editor-toolbar { z-index: 11112; }
 .medium-editor-toolbar li button * { color: inherit; }
+
+.medium-editor-toolbar-browse { margin: 0 7px; color: #fff; }
+.medium-editor-toolbar-form .medium-editor-toolbar-input { background: #439c55; }
+.medium-editor-toolbar-save { color: #fff; margin: 0 0 0 7px; }
+.medium-editor-toolbar-close { color: #fff; margin: 0 7px; }
