@@ -4,11 +4,18 @@
  *= require scrivito_customer_icons
  *= require_self
  */
-
-.medium-editor-toolbar { z-index: 11112; }
+ .medium-toolbar-arrow-under::after { top: auto;}
+.medium-editor-toolbar { z-index: 11112; margin:0 10px; background:rgba(67, 148, 57, 0.9);
+  border-radius:4px;}
+.medium-editor-toolbar li button { height:40px; min-width:40px; padding:10px;
+  border:none; margin:1px; background:rgba(0,0,0,.1);
+  }
 .medium-editor-toolbar li button * { color: inherit; }
-
-.medium-editor-toolbar-browse { margin: 0 7px; color: #fff; }
-.medium-editor-toolbar-form .medium-editor-toolbar-input { background: #439c55; }
-.medium-editor-toolbar-save { color: #fff; margin: 0 0 0 7px; }
-.medium-editor-toolbar-close { color: #fff; margin: 0 7px; }
+.medium-editor-toolbar li button .scrivito_customer_icon { font-size:18px;}
+.medium-editor-toolbar-form .scrivito_customer_icon { font-size:18px;
+  min-width:40px; height:40px; line-height: 40px!important;
+  display:inline-block; text-align:center;
+  color: #fff; margin: 1px; background:rgba(0,0,0,.1);
+  }
+.medium-editor-toolbar-form .scrivito_customer_icon:hover {background:rgba(0,0,0,.3);}
+.medium-editor-toolbar-form .medium-editor-toolbar-input {margin: 1px;height:40px; background:rgba(0,0,0,.3);}
