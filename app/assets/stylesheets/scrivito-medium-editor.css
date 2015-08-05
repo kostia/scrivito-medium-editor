@@ -1,10 +1,9 @@
 /*
  *= require medium-editor
  *= require medium-editor-theme-flat
- *= require scrivito_customer_icons
  *= require_self
  */
- .medium-toolbar-arrow-under::after { top: auto;}
+.medium-toolbar-arrow-under::after { top: auto;}
 .medium-editor-toolbar { z-index: 11112; margin:0 10px; background:rgba(67, 148, 57, 0.9);
   border-radius:4px;}
 .medium-editor-toolbar li button { height:40px; min-width:40px; padding:10px;
