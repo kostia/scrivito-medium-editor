@@ -73,6 +73,7 @@ var editor_options = function(toolbar_options) {
     }
   };
   if (toolbar_options) { options.toolbar = toolbar_options; }
+  options.toolbar.standardizeSelectionStart = true;
   return options;
 };
 
